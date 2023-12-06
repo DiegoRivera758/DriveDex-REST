@@ -2,7 +2,7 @@ const FabricantesModel = require("../models/fabricantes");
 
 class FabricantesController {
   /**
-   * Recupera una colección de valores de un recurso:
+   * Recupera una colección de valores de un recurs
    *
    * ```http
    *   GET /fabricantes
