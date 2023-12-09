@@ -1,37 +1,37 @@
-const FabricantesModel = require("../models/fabricantes");
+const EspecificacionesModel = require("../models/especificaciones");
 
-class FabricantesController {
+class EspecificacionesController {
   /**
-   * Recupera una colección de valores de un recurs
+   * Recupera una colección de valores de un recurso:
    *
    * ```http
-   *   GET /fabricantes
+   *   GET /especificaciones
    *   Accept: application/json
    * ```
    */
   static async indexGet(req, res) {
-    let data = await FabricantesModel.consultar();
+    let data = await EspecificacionesModel.consultar();
     res.send(data);
   }
   /**
    * Recibe una petición para crear un recurso:
    *
    * ```http
-   *   POST /fabricantes
+   *   POST /especificaciones
    *   Content-Type: application/json
    *
-   *   {"nombre":"Nuevo fabricante"}
+   *   {"nombre":"Nueva especificacion"}
    * ```
    */
   static async indexPost(req, res) {
     try {
       const newData = req.body;
 
-      const insertedId = await FabricantesModel.insertar(newData);
+      const insertedId = await EspecificacionesModel.insertar(newData);
 
       res
         .status(201)
-        .header("Location", `/fabricantes/${insertedId}`)
+        .header("Location", `/especificaciones/${insertedId}`)
         .send({ status: 201, message: "Created" });
     } catch (error) {
       console.error(error);
@@ -42,13 +42,13 @@ class FabricantesController {
    * Recupera el valor de un recurso individual:
    *
    * ```http
-   *   GET /fabricantes/{id}
+   *   GET /especificaciones/{id}
    *   Accept: application/json
    * ```
    */
   static async itemGet(req, res) {
     let id = req.params.id;
-    let data = await FabricantesModel.consultarPorId(id);
+    let data = await EspecificacionesModel.consultarPorId(id);
     if (data.length == 0) {
       res.status(404).send({ errno: 404, error: "Not found" });
       return;
@@ -60,10 +60,10 @@ class FabricantesController {
    * Recibe una petición para actualizar parte de un recurso:
    *
    * ```http
-   *   PATCH /fabricantes/{id}
+   *   PATCH /especificaciones/{id}
    *   Content-Type: application/json
    *
-   *   {"nombre": "Nuevo nombre del fabricante"}
+   *   {"nombre": "Nuevo nombre de la especificacion"}
    * ```
    */
   static async itemPatch(req, res) {
@@ -71,7 +71,7 @@ class FabricantesController {
       const id = req.params.id;
       const updatedFields = req.body;
 
-      const result = await FabricantesModel.actualizar(id, updatedFields);
+      const result = await EspecificacionesModel.actualizar(id, updatedFields);
 
       if (result === 0) {
         res.status(404).send({ errno: 404, error: "Not found" });
@@ -85,4 +85,4 @@ class FabricantesController {
   }
 }
 
-module.exports = FabricantesController;
+module.exports = EspecificacionesController;

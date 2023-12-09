@@ -33,21 +33,3 @@ CREATE TABLE especificaciones (
     PRIMARY KEY       (id_especificacion),
     FOREIGN KEY       (fk_id_modelo) REFERENCES modelos(id_modelo)
 );
-
-CREATE TABLE opiniones_usuarios (
-    id_opinion      INT             NOT NULL AUTO_INCREMENT,
-    comentario      TEXT,
-    calificacion    INT             NOT NULL,
-    fk_id_modelo    INT             NOT NULL,
-    PRIMARY KEY     (id_opinion),
-    FOREIGN KEY     (fk_id_modelo) REFERENCES modelos(id_modelo)
-);
-
-CREATE TABLE precios (
-    id_precio       INT             NOT NULL AUTO_INCREMENT,
-    valor           DECIMAL(10,2)   NOT NULL,
-    fecha           DATE,
-    fk_id_modelo    INT             NOT NULL,
-    PRIMARY KEY     (id_precio),
-    FOREIGN KEY     (fk_id_modelo) REFERENCES modelos(id_modelo)
-);

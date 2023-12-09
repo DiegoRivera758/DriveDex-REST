@@ -1,6 +1,6 @@
 # API RESTful con Node.js
 
-Proyecto de demostración para clases de desarrollo de APIs utilizando Node.js,
+Proyecto de plataforma web DriveDex demostración, API utilizando Node.js,
 con implementación en contenedores de Docker.
 
 ## Tabla de contenido
